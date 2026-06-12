@@ -182,8 +182,8 @@
 </div>
 
 <div class="section-nav-row">
-<button class="btn-ghost" onclick="showSection('home')">&#8592; Home</button>
-<button class="btn-primary" onclick="showSection('subtraction')">Subtraction &rarr;</button>
+  <button class="btn-ghost" onclick="showSection('home')">&#8592; Home</button>
+  <button class="btn-primary" onclick="showSection('subtraction')">Subtraction &rarr;</button>
 </div>
 </section>
 
@@ -261,7 +261,169 @@
 </div>
 
 <div class="section-nav-row">
-<button class="btn-ghost" onclick="showSection('addition')">&#8592; Addition</button>
-<button class="btn-primary" onclick="showSection('multiplication')">Multiplication &rarr;</button>
+    <button class="btn-ghost" onclick="showSection('addition')">&#8592; Addition</button>
+    <button class="btn-primary" onclick="showSection('multiplication')">Multiplication &rarr;</button>
 </div>
 </section>
+
+<!-- multiplication section  -->
+
+<section class="page-section" id="multiplication">
+<div class="learn-header">
+<div class="learn-icon multiply">&times;</div>
+<div>
+<h2>Vedic Multiplication</h2>
+<p class="learn-sub">Sutra: <em>Urdhva-Tiryagbhyam</em> — "Vertically and Cross-wise"</p>
+</div>
+</div>
+
+<div class="method-grid">
+<div class="method-card">
+<div class="method-number">01</div>
+<h3>Urdhva-Tiryak: 2-digit × 2-digit</h3>
+<p>Multiply vertically then cross-wise. Write partial products in columns and carry. Works for <em>any</em> two 2-digit numbers.</p>
+<div class="example-box">
+<p class="ex-title">Example: 23 × 41</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Rightmost column (units × units): 3 × 1 = <strong>3</strong></span></div>
+<div class="step"><span class="step-n">2</span><span>Middle (cross): (2×1) + (3×4) = 2 + 12 = 14 → write <strong>4</strong>, carry 1</span></div>
+<div class="step"><span class="step-n">3</span><span>Left (tens × tens): 2 × 4 = 8 + carry 1 = <strong>9</strong></span></div>
+<div class="step result-step"><span>Answer: <strong>943</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">02</div>
+<h3>Near-Base Multiplication (Nikhilam)</h3>
+<p>When both numbers are close to 10, 100, or 1000 — use deviations. Multiply deviations together, cross-add for the main part.</p>
+<div class="example-box">
+<p class="ex-title">Example: 97 × 96 (base 100)</p>
+<div class="steps">
+       <div class="step"><span class="step-n">1</span><span>Deviations: 97 → −3, 96 → −4</span></div>
+       <div class="step"><span class="step-n">2</span><span>Cross-add: 97 + (−4) = 93 <em>or</em> 96 + (−3) = 93 → left part <strong>93</strong></span></div>
+       <div class="step"><span class="step-n">3</span><span>Multiply deviations: (−3)×(−4) = 12 → right part <strong>12</strong></span></div>
+       <div class="step result-step"><span>Answer: <strong>9312</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">03</div>
+<h3>Multiply by 11 — Instant Rule</h3>
+<p>To multiply any 2-digit number by 11, simply place the sum of its digits between the two digits. Expand the trick to larger numbers.</p>
+<div class="example-box">
+<p class="ex-title">Example: 54 × 11</p>
+<div class="steps">
+    <div class="step"><span class="step-n">1</span><span>Digits: 5 and 4. Sum = 9</span></div>
+    <div class="step"><span class="step-n">2</span><span>Place 9 in the middle: 5 _ 4 → <strong>594</strong></span></div>
+    <div class="step"><span class="step-n">&#9998;</span><span>If sum &gt; 9 (e.g., 78×11: 7+8=15), write 5, carry 1 to 7 → 858</span></div>
+    <div class="step result-step"><span>Answer: <strong>594</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">04</div>
+<h3>Squaring Numbers Ending in 5</h3>
+<p>Sutra: <em>Ekadhikena Purvena.</em> For any number ending in 5, multiply the left part by (left part + 1), and append 25.</p>
+<div class="example-box">
+<p class="ex-title">Example: 65²</p>
+<div class="steps">
+      <div class="step"><span class="step-n">1</span><span>Left part = 6. Next number = 7</span></div>
+      <div class="step"><span class="step-n">2</span><span>6 × 7 = <strong>42</strong></span></div>
+      <div class="step"><span class="step-n">3</span><span>Append 25: <strong>4225</strong></span></div>
+      <div class="step result-step"><span>Answer: <strong>4225</strong></span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section-nav-row">
+      <button class="btn-ghost" onclick="showSection('subtraction')">&#8592; Subtraction</button>
+      <button class="btn-primary" onclick="showSection('division')">Division &rarr;</button>
+</div>
+</section>
+
+<!-- division section  -->
+
+<section class="page-section" id="division">
+<div class="learn-header">
+<div class="learn-icon divide">&divide;</div>
+<div>
+<h2>Vedic Division</h2>
+<p class="learn-sub">Sutra: <em>Paravartya Yojayet</em> — "Transpose and Apply"</p>
+</div>
+</div>
+
+<div class="method-grid">
+<div class="method-card">
+<div class="method-number">01</div>
+<h3>Division by 9 — Digit Sum Method</h3>
+<p>To divide by 9, bring down the first digit, add to the next, carry as you go. The last result is the remainder.</p>
+<div class="example-box">
+<p class="ex-title">Example: 1234 ÷ 9</p>
+<div class="steps">
+      <div class="step"><span class="step-n">1</span><span>Bring down 1 → quotient digit: <strong>1</strong></span></div>
+      <div class="step"><span class="step-n">2</span><span>1 + 2 = 3 → quotient digit: <strong>3</strong></span></div>
+      <div class="step"><span class="step-n">3</span><span>3 + 3 = 6 → quotient digit: <strong>6</strong></span></div>
+      <div class="step"><span class="step-n">4</span><span>6 + 4 = 10 → quotient digit: 1 carry 1 → 6 becomes 7, remainder <strong>1</strong></span></div>
+      <div class="step result-step"><span>Answer: <strong>137 remainder 1</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">02</div>
+<h3>Paravartya (Transpose & Apply)</h3>
+<p>Divide by numbers like 11, 12, etc. — rewrite as (10 + r) and use the complement <em>r</em> to build the quotient digit by digit.</p>
+<div class="example-box">
+<p class="ex-title">Example: 1234 ÷ 12</p>
+<div class="steps">
+      <div class="step"><span class="step-n">1</span><span>Divisor = 12 = 10 + 2. Flag digit = 2</span></div>
+      <div class="step"><span class="step-n">2</span><span>Bring down 1. Multiply by flag: 1×2=2. Next: 2−2=0... quotient builds: <strong>102 r 10</strong></span></div>
+      <div class="step"><span class="step-n">3</span><span>Refine: 102 remainder 10 → 10/12 → add 0, adjust → <strong>102 r 10</strong></span></div>
+      <div class="step result-step"><span>Answer: <strong>102 remainder 10</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">03</div>
+<h3>Dhvajanka — Flag Method</h3>
+<p>For multi-digit divisors, place the <em>flag</em> (extra digits of the divisor) above the dividend and subtract flag-products as you proceed left to right.</p>
+<div class="example-box">
+<p class="ex-title">Example: 2135 ÷ 23</p>
+<div class="steps">
+      <div class="step"><span class="step-n">1</span><span>Main divisor = 2, Flag digit = 3</span></div>
+      <div class="step"><span class="step-n">2</span><span>21 ÷ 2 = 9 (trial). 9 × 3 = 27. Adjust: try 9 → remainder too small → try <strong>9</strong></span></div>
+      <div class="step"><span class="step-n">3</span><span>Continuing: quotient = 92, remainder = 19</span></div>
+      <div class="step result-step"><span>Answer: <strong>92 remainder 19</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">04</div>
+<h3>Straight Division — Urdhva Method</h3>
+<p>For 3-digit ÷ 2-digit, split the divisor and use the vertical-cross approach column by column to get both quotient and remainder simultaneously.</p>
+<div class="example-box">
+<p class="ex-title">Example: 456 ÷ 12</p>
+<div class="steps">
+      <div class="step"><span class="step-n">1</span><span>Divisor 12 → main 1, flag 2. Partial dividend: 4 ÷ 1 → trial quotient <strong>3</strong></span></div>
+      <div class="step"><span class="step-n">2</span><span>Remainder: 4 − 3×1 = 1. Bring 5: partial = 15 − 3×2 = 9</span></div>
+      <div class="step"><span class="step-n">3</span><span>9 ÷ 1 → trial <strong>7</strong>. Remainder: 9 − 7×1 = 2. Bring 6: 26 − 7×2 = 12 → adjust</span></div>
+      <div class="step"><span class="step-n">4</span><span>38, remainder 0. Answer: <strong>38</strong></span></div>
+      <div class="step result-step"><span>Answer: <strong>38</strong></span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section-nav-row">
+  <button class="btn-ghost" onclick="showSection('multiplication')">&#8592; Multiplication</button>
+  <button class="btn-primary" onclick="showSection('practice')">Go to Practice &rarr;</button>
+</div>
+</section>
+
+<!-- done with all the sub section of algebra operation cards , each algebra operation has 4 cards in which per card have a title,example of the title and also with a 4step explanation and finally result of ex-title problem -->
