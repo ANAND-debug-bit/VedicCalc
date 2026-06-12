@@ -9,6 +9,77 @@
 </head>
 <body>
 
+<!-- navigating through different sections i.e 6sections in the website -->
 
+<nav class="navbar" id="navbar">
+<div class="nav-logo">
+<div class="mandala-icon" id="navMandala"></div>
+<span>VedicCalc</span>
+</div>
+<ul class="nav-links">
+    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+    <li><a href="#" class="nav-link" data-section="addition">Addition</a></li>
+    <li><a href="#" class="nav-link" data-section="subtraction">Subtraction</a></li>
+    <li><a href="#" class="nav-link" data-section="multiplication">Multiplication</a></li>
+    <li><a href="#" class="nav-link" data-section="division">Division</a></li>
+    <li><a href="#" class="nav-link practice-btn" data-section="practice">Practice</a></li>
+</ul>
+<!-- hamburger menu icon insertion (only for mobilephones) -->
+<button class="hamburger" id="hamburger">&#9776;</button>
+</nav>
 
-    
+<!-- homepage -->
+
+<section class="page-section active" id="home">
+<div class="hero">
+
+<!-- trying a new mandala art rotating canvas on the home page website ,maths part i.e. rotation and shape of the structure will be done through java script  -->
+ 
+<div class="hero-mandala-wrap">
+<canvas id="heroMandala" width="420" height="420"></canvas>
+</div>
+
+<div class="hero-text">
+<p class="hero-eyebrow">Ancient System · Modern Application</p>
+<h1 class="hero-title">The Vedic Way<br /><span class="accent">of Mathematics</span></h1>
+
+<p class="hero-desc">Vedic Mathematics is a system of mental calculation rooted in sixteen core sutras (aphorisms) rediscovered from ancient Indian scriptures. Master addition, subtraction, multiplication, and division — faster than any calculator.</p>
+<div class="hero-cta-row">
+<button class="btn-primary" onclick="showSection('addition')">Start Learning</button>
+<button class="btn-ghost" onclick="showSection('practice')">Take a Test</button>
+</div>
+</div>
+</div>
+
+<!-- algebra 4 operations card insertion  -->
+<div class="home-cards">
+  
+<div class="home-card" onclick="showSection('addition')">
+<div class="card-glyph">+</div>
+<h3>Addition</h3>
+<p>Left-to-right addition, digit grouping, and the Nikhilam base method.</p>
+<span class="card-arrow">Explore &rarr;</span>
+</div>
+
+<div class="home-card" onclick="showSection('subtraction')">
+<div class="card-glyph">&minus;</div>
+<h3>Subtraction</h3>
+<p>All-from-nine and last-from-ten, complement subtraction with zero borrowing.</p>
+<span class="card-arrow">Explore &rarr;</span>
+</div>
+
+<div class="home-card" onclick="showSection('multiplication')">
+<div class="card-glyph">&times;</div>
+<h3>Multiplication</h3>
+<p>Urdhva-Tiryagbhyam, near-base multiplication, and the vertical-cross method.</p>
+<span class="card-arrow">Explore &rarr;</span>
+</div>
+
+<div class="home-card" onclick="showSection('division')">
+<div class="card-glyph">&divide;</div>
+<h3>Division</h3>
+<p>Dhvajanka flag method and Paravartya — divide any number in seconds.</p>
+<span class="card-arrow">Explore &rarr;</span>
+</div>
+</div>
+   
