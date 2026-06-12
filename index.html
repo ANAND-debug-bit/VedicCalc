@@ -17,12 +17,12 @@
 <span>VedicCalc</span>
 </div>
 <ul class="nav-links">
-    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
-    <li><a href="#" class="nav-link" data-section="addition">Addition</a></li>
-    <li><a href="#" class="nav-link" data-section="subtraction">Subtraction</a></li>
-    <li><a href="#" class="nav-link" data-section="multiplication">Multiplication</a></li>
-    <li><a href="#" class="nav-link" data-section="division">Division</a></li>
-    <li><a href="#" class="nav-link practice-btn" data-section="practice">Practice</a></li>
+  <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+  <li><a href="#" class="nav-link" data-section="addition">Addition</a></li>
+  <li><a href="#" class="nav-link" data-section="subtraction">Subtraction</a></li>
+  <li><a href="#" class="nav-link" data-section="multiplication">Multiplication</a></li>
+  <li><a href="#" class="nav-link" data-section="division">Division</a></li>
+  <li><a href="#" class="nav-link practice-btn" data-section="practice">Practice</a></li>
 </ul>
 <!-- hamburger menu icon insertion (only for mobilephones) -->
 <button class="hamburger" id="hamburger">&#9776;</button>
@@ -104,3 +104,164 @@
 
 </section>
 
+<!-- addition section  -->
+
+<section class="page-section" id="addition">
+<div class="learn-header">
+<div class="learn-icon">+</div>
+<div>
+<h2>Vedic Addition</h2>
+<p class="learn-sub">Sutra: <em>Ekadhikena Purvena</em> — "One more than the previous"</p>
+
+</div>
+</div>
+
+<div class="method-grid">
+<div class="method-card">
+<div class="method-number">01</div>
+<!-- 4 cards per section  -->
+
+<h3>Left-to-Right Addition</h3>
+<p>In traditional addition we add right to left. The Vedic approach adds <strong>left to right</strong>, giving you the most significant digit first — ideal for mental work.</p>
+<div class="example-box">
+<p class="ex-title">Example: 347 + 286</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Hundreds: 3 + 2 = <strong>5</strong></span></div>
+<div class="step"><span class="step-n">2</span><span>Tens: 4 + 8 = 12 → write <strong>1</strong>, carry 1 → 5 becomes 6</span></div>
+<div class="step"><span class="step-n">3</span><span>Units: 7 + 6 = 13 → write <strong>3</strong>, carry 1 → previous 1 becomes 2</span></div>
+<div class="step result-step"><span>Answer: <strong>633</strong></span></div>
+</div>
+</div>
+</div>
+
+
+<div class="method-card">
+<div class="method-number">02</div>
+<h3>Base 10 Complement (Nikhilam)</h3>
+<p>When numbers are close to a base (10, 100, 1000), express them as <em>base ± deviation</em> and add the deviations. Much faster than column addition.</p>
+<div class="example-box">
+<p class="ex-title">Example: 97 + 96</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Base = 100. Deviations: 97 → −3, 96 → −4</span></div>
+<div class="step"><span class="step-n">2</span><span>Sum of deviations: −3 + (−4) = −7</span></div>
+<div class="step"><span class="step-n">3</span><span>Add to 2× base: 200 − 7 = <strong>193</strong></span></div>
+<div class="step result-step"><span>Answer: <strong>193</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">03</div>
+<h3>Grouping & Digit Sum Check</h3>
+<p>Group digits into pairs, add pairs simultaneously, then verify using the <em>digit-sum (casting out nines)</em> rule to catch errors instantly.</p>
+<div class="example-box">
+<p class="ex-title">Example: 4532 + 3789</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Group left: 45 + 37 = 82 (thousands/hundreds)</span></div>
+<div class="step"><span class="step-n">2</span><span>Group right: 32 + 89 = 121 → 1 carry to left</span></div>
+<div class="step"><span class="step-n">3</span><span>82 + 1 = 83, append 21 → <strong>8321</strong></span></div>
+<div class="step"><span class="step-n">✓</span><span>Digit-sum check: (4+5+3+2)+(3+7+8+9) = 14+27 = 41 → 5; 8+3+2+1 = 14 → 5 ✓</span></div>
+<div class="step result-step"><span>Answer: <strong>8321</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card full-width">
+<div class="method-number">04</div>
+<h3>Addition of Fractions — Sutra: Anurupyena</h3>
+<p>Multiply cross-wise, add, and place the result over the product of denominators. Faster than finding LCM for mental calculations.</p>
+<div class="example-box">
+<p class="ex-title">Example: 2/3 + 3/5</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Cross-multiply numerators: (2×5) + (3×3) = 10 + 9 = <strong>19</strong></span></div>
+<div class="step"><span class="step-n">2</span><span>Multiply denominators: 3 × 5 = <strong>15</strong></span></div>
+<div class="step result-step"><span>Answer: <strong>19/15</strong></span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section-nav-row">
+<button class="btn-ghost" onclick="showSection('home')">&#8592; Home</button>
+<button class="btn-primary" onclick="showSection('subtraction')">Subtraction &rarr;</button>
+</div>
+</section>
+
+  <!-- subtraction section -->
+<section class="page-section" id="subtraction">
+<div class="learn-header">
+<div class="learn-icon minus">&minus;</div>
+<div>
+<h2>Vedic Subtraction</h2>
+<p class="learn-sub">Sutra: <em>Nikhilam Navatascaramam Dasatah</em> — "All from nine and the last from ten"</p>
+</div>
+</div>
+
+<div class="method-grid">
+
+<div class="method-card">
+<div class="method-number">01</div>
+<h3>All from 9, Last from 10</h3>
+<p>To subtract any number from a power of 10, subtract each digit from 9 except the last digit which is subtracted from 10. No borrowing required!</p>
+<div class="example-box">
+<p class="ex-title">Example: 10000 − 3746</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>9 − 3 = <strong>6</strong></span></div>
+<div class="step"><span class="step-n">2</span><span>9 − 7 = <strong>2</strong></span></div>
+<div class="step"><span class="step-n">3</span><span>9 − 4 = <strong>5</strong></span></div>
+<div class="step"><span class="step-n">4</span><span>10 − 6 = <strong>4</strong> (last digit)</span></div>
+<div class="step result-step"><span>Answer: <strong>6254</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">02</div>
+<h3>Complement Subtraction</h3>
+<p>Find the ten's complement of the subtrahend and add. This turns any subtraction into addition — far less error-prone for mental maths.</p>
+<div class="example-box">
+<p class="ex-title">Example: 523 − 178</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Complement of 178: all-from-9, last-from-10 → 822</span></div>
+<div class="step"><span class="step-n">2</span><span>523 + 822 = 1345</span></div>
+<div class="step"><span class="step-n">3</span><span>Drop the leading 1: <strong>345</strong></span></div>
+<div class="step result-step"><span>Answer: <strong>345</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">03</div>
+<h3>Base Deviation Method</h3>
+<p>Express both numbers relative to a chosen base, subtract the deviations, and adjust. Powerful for numbers near round figures.</p>
+<div class="example-box">
+<p class="ex-title">Example: 1003 − 997</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Base = 1000. 1003 = 1000 + 3; 997 = 1000 − 3</span></div>
+<div class="step"><span class="step-n">2</span><span>Deviations: +3 and −3. Difference of deviations: 3 − (−3) = 6</span></div>
+<div class="step result-step"><span>Answer: <strong>6</strong></span></div>
+</div>
+</div>
+</div>
+
+<div class="method-card">
+<div class="method-number">04</div>
+<h3>Left-to-Right Subtraction</h3>
+<p>Work from left to right, subtracting digit by digit and adjusting as you go. Gives you the leading digit of the answer immediately.</p>
+<div class="example-box">
+<p class="ex-title">Example: 862 − 375</p>
+<div class="steps">
+<div class="step"><span class="step-n">1</span><span>Hundreds: 8 − 3 = 5 (but next step needs borrow check)</span></div>
+<div class="step"><span class="step-n">2</span><span>Tens: 6 − 7 → borrow: 5 becomes 4, 16 − 7 = 9</span></div>
+<div class="step"><span class="step-n">3</span><span>Units: 2 − 5 → borrow: 9 becomes 8, 12 − 5 = 7</span></div>
+<div class="step result-step"><span>Answer: <strong>487</strong></span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section-nav-row">
+<button class="btn-ghost" onclick="showSection('addition')">&#8592; Addition</button>
+<button class="btn-primary" onclick="showSection('multiplication')">Multiplication &rarr;</button>
+</div>
+</section>
