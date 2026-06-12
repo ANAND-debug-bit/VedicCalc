@@ -427,3 +427,153 @@
 </section>
 
 <!-- done with all the sub section of algebra operation cards , each algebra operation has 4 cards in which per card have a title,example of the title and also with a 4step explanation and finally result of ex-title problem -->
+
+<!-- practice section -->
+
+<section class="page-section" id="practice">
+<div id="practiceHome">
+<div class="practice-hero">
+<h2>Practice Arena</h2>
+<p class="practice-sub">Test your Vedic maths speed and accuracy. Five levels of increasing challenge — each with 10 questions in CBT format.</p>
+</div>
+
+<div class="level-select-grid">
+<div class="level-card" data-level="1">
+<div class="level-badge">L1</div>
+<h3>Level 1</h3>
+<p>Basic operations with small numbers (1–20). Perfect for beginners applying sutras for the first time.</p>
+<span class="level-tag">Beginner</span>
+</div>
+<div class="level-card" data-level="2">
+<div class="level-badge">L2</div>
+<h3>Level 2</h3>
+<p>2-digit operations. Nikhilam addition, complement subtraction, and 11× multiplication tricks.</p>
+<span class="level-tag">Elementary</span>
+</div>
+<div class="level-card" data-level="3">
+<div class="level-badge">L3</div>
+<h3>Level 3</h3>
+<p>3-digit operations. Near-base multiplication, Urdhva 2×2, and digit-sum verification.</p>
+<span class="level-tag">Intermediate</span>
+</div>
+<div class="level-card" data-level="4">
+<div class="level-badge">L4</div>
+<h3>Level 4</h3>
+<p>Mixed 3-4 digit operations. Flag division, Paravartya, and complex base methods.</p>
+<span class="level-tag">Advanced</span>
+</div>
+<div class="level-card" data-level="5">
+<div class="level-badge">L5</div>
+<h3>Level 5</h3>
+<p>Large-number mastery. Full Urdhva 3×3, multi-step Dhvajanka, and combined sutras.</p>
+<span class="level-tag">Expert</span>
+</div>
+</div>
+
+<div class="timer-setup" id="timerSetup" style="display:none">
+<div class="timer-card">
+<h3>Set Your Timer</h3>
+<p>Choose how many minutes you want for <span id="selectedLevelName"></span>. The timer starts when the test begins.</p>
+<div class="timer-options">
+      <button class="timer-opt" data-min="5">5 min</button>
+      <button class="timer-opt" data-min="10">10 min</button>
+      <button class="timer-opt" data-min="15">15 min</button>
+      <button class="timer-opt" data-min="20">20 min</button>
+      <button class="timer-opt custom-timer-btn" data-min="custom">Custom</button>
+</div>
+<div class="custom-time-row" id="customTimeRow" style="display:none">
+<input type="number" id="customMinInput" min="1" max="60" placeholder="Enter minutes" />
+<span>min</span>
+</div>
+<button class="btn-primary start-test-btn" id="startTestBtn" disabled>Start Test</button>
+<button class="btn-ghost" id="backFromTimer">&#8592; Change Level</button>
+</div>
+</div>
+</div>
+
+<!-- Test will be in a format of computer based test -->
+
+<div id="cbtView" style="display:none">
+<div class="cbt-header">
+<div class="cbt-meta">
+<span id="cbtLevelLabel">Level 1</span>
+<span class="cbt-q-counter" id="cbtQCounter">Q 1 / 10</span>
+</div>
+<div class="cbt-timer-display" id="cbtTimerDisplay">
+<span class="timer-icon">&#9201;</span>
+<span id="timerLabel">10:00</span>
+</div>
+<div class="cbt-progress-bar-wrap">
+<div class="cbt-progress-bar" id="cbtProgressBar"></div>
+</div>
+</div>
+
+<div class="cbt-body">
+<div class="cbt-question-wrap">
+<p class="cbt-q-text" id="cbtQText"></p>
+</div>
+<div class="cbt-options" id="cbtOptions"></div>
+<div class="cbt-solution-box" id="cbtSolutionBox" style="display:none">
+<div class="solution-header">
+<span id="solutionVerdict"></span>
+</div>
+<div class="solution-body">
+<p class="sol-sutra" id="solSutra"></p>
+<div id="solSteps"></div>
+</div>
+<button class="btn-primary" id="nextQBtn">Next Question &rarr;</button>
+</div>
+</div>
+</div>
+
+<!-- final result view which will contain - number of correct and incorrect questions , percentage of correct questions and an option of retry -->
+ 
+<div id="resultView" style="display:none">
+<div class="result-wrap">
+<div class="result-mandala-wrap">
+<canvas id="resultMandala" width="200" height="200"></canvas>
+</div>
+<h2 class="result-title" id="resultTitle">Test Complete!</h2>
+<div class="result-score-row">
+<div class="result-score-block">
+<span class="rs-num" id="rsCorrect">0</span>
+<span class="rs-lbl">Correct</span>
+</div>
+<div class="result-score-block">
+<span class="rs-num" id="rsWrong">0</span>
+<span class="rs-lbl">Incorrect</span>
+</div>
+<div class="result-score-block">
+<span class="rs-num" id="rsPct">0%</span>
+<span class="rs-lbl">Score</span>
+</div>
+</div>
+
+<p class="result-msg" id="resultMsg"></p>
+<div class="result-btns">
+<button class="btn-primary" id="retryBtn">Retry Level</button> <after getting result message there is an option of retry that level also -->
+<button class="btn-ghost" onclick="showSection('practice'); resetPractice()">All Levels</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- website footer part -->
+
+<footer class="site-footer">
+<div class="footer-inner">
+<span class="footer-brand">VedicCalc</span>
+<span class="footer-copy">Rooted in the ancient wisdom of Bharatiya mathematics.</span>
+<span class="footer-copy">Thoughtfully designed and developed by <b>Atharv Anand</b></span>
+<span class="footer-links">
+<a href="#" onclick="showSection('home')">Home</a>
+<a href="#" onclick="showSection('practice')">Practice</a>
+</span>
+</div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
