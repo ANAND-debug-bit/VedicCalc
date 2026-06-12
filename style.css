@@ -1,0 +1,111 @@
+:root {
+  --indigo:       #1a1535;
+  --indigo-mid:   #2d2660;
+  --indigo-light: #3d3580;
+  --saffron:      #e8831a;
+  --saffron-light:#f5a623;
+  --gold:         #c9962d;
+  --parchment:    #fdf6e8;
+  --parchment-dark: #f2e8ce;
+  --cream:        #fefcf5;
+  --crimson:      #c0392b;
+  --forest:       #1a6b45;
+  --text-dark:    #1a1535;
+  --text-mid:     #3d3560;
+  --text-muted:   #7a7098;
+  --white:        #ffffff;
+  --card-bg:      #fffdf5;
+  --border:       rgba(200, 160, 40, 0.25);
+
+  --ff-display: 'Playfair Display', Georgia, serif;
+  --ff-body:    'Inter', system-ui, sans-serif;
+  --ff-serif:   'Crimson Text', Georgia, serif;
+
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(26,21,53,0.10);
+  --shadow-lg: 0 12px 48px rgba(26,21,53,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff-body);
+  background: var(--parchment);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* styling of scrollbar  */
+
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--parchment-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+/* styling of navigation bar  */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; gap: 1.5rem;
+  background: var(--indigo);
+  padding: 0 2rem;
+  height: 64px;
+  border-bottom: 2px solid var(--saffron);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--ff-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--saffron-light);
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.mandala-icon {
+  width: 30px; height: 30px;
+  border: 2px solid var(--saffron);
+  border-radius: 50%;
+  position: relative;
+}
+.mandala-icon::before, .mandala-icon::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+}
+.mandala-icon::after { inset: 9px; background: var(--saffron); border: none;
+}
+
+.nav-links {
+  display: flex; list-style: none; gap: 0.25rem; margin-left: auto;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+.nav-link:hover, .nav-link.active { color: var(--saffron-light);
+background: rgba(232, 131, 26, 0.12);
+}
+.nav-link.practice-btn { background: var(--saffron); color: var(--white); 
+font-weight: 600;
+}
+.nav-link.practice-btn:hover { background: var(--saffron-light); color: var(--white);
+}
+
+.hamburger {
+  display: none; background: none; border: none; color: var(--saffron-light); font-size: 1.5rem;
+cursor: pointer; margin-left: auto;
+}
+
