@@ -1,4 +1,4 @@
-"use strict";
+ "use strict"; //just tryin out to make debugging easier 
 
 function showSection(id) {
 document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
@@ -66,8 +66,7 @@ rings.forEach(function (ring) {
 
 let ringRadius = ring.r;
 let petals = ring.petals;
-
-        
+   
 ctx.beginPath();
 ctx.arc(centerX, centerY, ringRadius, 0, Math.PI * 2);
 ctx.strokeStyle = ring.color;
@@ -76,15 +75,12 @@ ctx.globalAlpha = 0.5;
 ctx.stroke();
 ctx.globalAlpha = 1;
 
-
 for (let i = 0; i < petals; i++) {
 
 let angle = (i / petals) * Math.PI * 2;
 let px = centerX + ringRadius * Math.cos(angle);
 let py = centerY + ringRadius * Math.sin(angle);
-
 let nextAngle = ((i + 1) / petals) * Math.PI * 2;
-
 let nx = centerX + ringRadius * Math.cos(nextAngle);
 let ny = centerY + ringRadius * Math.sin(nextAngle);
 let middleAngle = (angle + nextAngle) / 2;
@@ -104,13 +100,10 @@ ctx.stroke();
 ctx.globalAlpha = 1; }
 
 for (let i = 0; i < petals; i++) {
-
 let angle = (i / petals) * Math.PI * 2;
-
 ctx.beginPath();
 ctx.moveTo(centerX, centerY);
 ctx.lineTo( centerX + ringRadius * Math.cos(angle), centerY + ringRadius * Math.sin(angle) );
-
 ctx.strokeStyle = ring.color;
 ctx.lineWidth = small ? 0.4 : 0.6;
 ctx.globalAlpha = 0.3;
@@ -135,16 +128,13 @@ if (!canvas) return;
 let ctx = canvas.getContext("2d");
 let centerX = canvas.width / 2;
 let centerY = canvas.height / 2;
-
 ctx.clearRect(0, 0, canvas.width, canvas.height);
-
 ctx.save();
 ctx.translate(centerX, centerY);
 ctx.rotate(heroRotation);
 ctx.translate(-centerX, -centerY);
 drawMandala(canvas, 190, false);
 ctx.restore();
-
 ctx.save();
 ctx.translate(centerX, centerY);
 ctx.rotate(-heroRotation * 1.5);
@@ -161,15 +151,13 @@ for (let i = 0; i < petals; i++) {
 let angle = (i / petals) * Math.PI * 2;
 let x = centerX + radius * Math.cos(angle);
 let y = centerY + radius * Math.sin(angle);
-
 ctx.beginPath();
 ctx.arc(x, y, 4, 0, Math.PI * 2);
 ctx.fillStyle = color;
 ctx.globalAlpha = 0.5;
 ctx.fill();
 ctx.globalAlpha = 1;
-}
-}
+} }
 
 animateHeroMandala();
 
@@ -681,7 +669,219 @@ steps: [ "77 = 7 × 11. So 143 × 77 = 143 × 7 × 11",
         "143 × 7 = 1001",
         "1001 × 11: insert digit sums → 1 | 1+0=1 | 0+0=0 | 0+1=1 | 1 = 11011",
         "Answer: 11011"
-]
+] } ] }
+
+// practice state on the site 
+
+let currentLevel = null;
+let selectedMinutes = null;
+let timerInterval = null;
+let secondsLeft = 0;
+let currentQIndex = 0;
+let score = { correct: 0, wrong: 0 };
+let questions = [];
+let resultMandalaInterval = null;
+
+function resetPractice() {
+clearInterval(timerInterval);
+clearInterval(resultMandalaInterval);
+timerInterval = null;
+
+document.getElementById('practiceHome').style.display = 'block';
+document.getElementById('cbtView').style.display = 'none';
+document.getElementById('resultView').style.display = 'none';
+document.getElementById('timerSetup').style.display = 'none';
+
+document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+document.querySelectorAll('.timer-opt').forEach(b => b.classList.remove('active'));
+document.getElementById('customTimeRow').style.display = 'none';
+document.getElementById('customMinInput').value = '';
+document.getElementById('startTestBtn').disabled = true;
+
+currentLevel = null;
+selectedMinutes = null;
+currentQIndex = 0;
+score = { correct: 0, wrong: 0 }; }
+
+// clicking on the level cards
+document.querySelectorAll('.level-card').forEach(card => { card.addEventListener('click', () => {
+currentLevel = parseInt(card.dataset.level);
+
+document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+card.classList.add('selected');
+document.getElementById('selectedLevelName').textContent = `Level ${currentLevel}`;
+document.getElementById('timerSetup').style.display = 'flex';
+selectedMinutes = null;
+document.getElementById('startTestBtn').disabled = true;
+document.querySelectorAll('.timer-opt').forEach(b => b.classList.remove('active'));
+document.getElementById('customTimeRow').style.display = 'none';
+document.getElementById('customMinInput').value = '';
+document.getElementById('timerSetup').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+});
+
+// Timer option click
+document.querySelectorAll('.timer-opt').forEach(btn => { btn.addEventListener('click', () => {
+document.querySelectorAll('.timer-opt').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+
+if (btn.dataset.min === 'custom') { document.getElementById('customTimeRow').style.display = 'flex';
+selectedMinutes = null; document.getElementById('startTestBtn').disabled = true;
+} else { document.getElementById('customTimeRow').style.display = 'none';
+selectedMinutes = parseInt(btn.dataset.min); document.getElementById('startTestBtn').disabled = false;
 }
-]
+});
+});
+
+document.getElementById('customMinInput').addEventListener('input', function () { const val = parseInt(this.value);
+if (val >= 1 && val <= 60) { selectedMinutes = val;
+document.getElementById('startTestBtn').disabled = false;} else {
+selectedMinutes = null; document.getElementById('startTestBtn').disabled = true;}
+});
+
+document.getElementById('backFromTimer').addEventListener('click', () => { document.getElementById('timerSetup').style.display = 'none';
+document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected')); currentLevel = null;
+});
+
+document.getElementById('startTestBtn').addEventListener('click', startTest);
+
+function startTest() { if (!currentLevel || !selectedMinutes) return;
+questions = shuffle([...QUESTIONS[currentLevel]]);
+currentQIndex = 0;
+score = { correct: 0, wrong: 0 };
+secondsLeft = selectedMinutes * 60;
+
+document.getElementById('practiceHome').style.display = 'none';
+document.getElementById('cbtView').style.display = 'block';
+document.getElementById('resultView').style.display = 'none';
+
+document.getElementById('cbtLevelLabel').textContent = `Level ${currentLevel}`;
+startTimer();
+renderQuestion(); }
+
+function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[arr[i], arr[j]] = [arr[j], arr[i]]; }
+return arr;}
+
+function startTimer() { updateTimerDisplay();
+timerInterval = setInterval(() => { secondsLeft--; updateTimerDisplay();
+
+if (secondsLeft <= 0) { clearInterval(timerInterval);
+timerInterval = null; endTest(true); } }, 1000); }
+
+function updateTimerDisplay() {
+const mins = Math.floor(secondsLeft / 60);
+const secs = secondsLeft % 60;
+const label = document.getElementById('timerLabel');
+label.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+label.classList.toggle('warning', secondsLeft <= 30);
 }
+
+function renderQuestion() {
+const q = questions[currentQIndex];
+const total = questions.length;
+
+document.getElementById('cbtQCounter').textContent = `Q ${currentQIndex + 1} / ${total}`;
+document.getElementById('cbtProgressBar').style.width = `${((currentQIndex + 1) / total) * 100}%`;
+document.getElementById('cbtQText').textContent = q.q;
+
+const optContainer = document.getElementById('cbtOptions');
+optContainer.innerHTML = '';
+const labels = ['A', 'B', 'C', 'D'];
+q.options.forEach((opt, i) => {
+const btn = document.createElement('button');
+btn.className = 'cbt-option-btn';
+btn.innerHTML = `<span class="option-label">${labels[i]}</span>${opt}`;
+btn.addEventListener('click', () => answerQuestion(i, btn));
+optContainer.appendChild(btn); });
+
+document.getElementById('cbtSolutionBox').style.display = 'none';
+document.getElementById('nextQBtn').style.display = 'none';}
+
+function answerQuestion(chosen, clickedBtn) { const q = questions[currentQIndex];
+const allBtns = document.querySelectorAll('.cbt-option-btn'); allBtns.forEach(b => (b.disabled = true));
+
+const isCorrect = chosen === q.ans;
+
+if (isCorrect) { score.correct++;
+clickedBtn.classList.add('correct'); }
+else {score.wrong++;
+clickedBtn.classList.add('wrong');
+allBtns[q.ans].classList.add('correct');}
+
+showSolution(q, isCorrect); }
+
+function showSolution(q, isCorrect) { const box = document.getElementById('cbtSolutionBox');
+box.style.display = 'block';
+
+const verdict = document.getElementById('solutionVerdict');
+verdict.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect — Correct answer: ' + q.options[q.ans];
+verdict.className = isCorrect ? 'verdict-correct' : 'verdict-wrong';
+
+document.getElementById('solSutra').textContent = q.sutra;
+
+const stepsEl = document.getElementById('solSteps');
+stepsEl.innerHTML = '';
+q.steps.forEach((step, i) => {
+const div = document.createElement('div');
+div.className = 'step';
+div.innerHTML = `<span class="step-n">${i + 1}</span><span>${step}</span>`;
+stepsEl.appendChild(div); });
+
+const nextBtn = document.getElementById('nextQBtn');
+nextBtn.style.display = 'flex';
+nextBtn.textContent = currentQIndex < questions.length - 1 ? 'Next Question →' : 'See Results →';
+box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });}
+
+document.getElementById('nextQBtn').addEventListener('click', () => { currentQIndex++;
+if (currentQIndex < questions.length) { renderQuestion();
+document.querySelector('.cbt-body').scrollIntoView({ behavior: 'smooth', block: 'start' });}
+
+else {endTest(false);} });
+
+// ending of the test
+function endTest(timedOut) { clearInterval(timerInterval);
+timerInterval = null;
+
+document.getElementById('cbtView').style.display = 'none';
+document.getElementById('resultView').style.display = 'block';
+
+const total = questions.length;
+const pct = Math.round((score.correct / total) * 100);
+
+document.getElementById('rsCorrect').textContent = score.correct;
+document.getElementById('rsWrong').textContent = score.wrong + (total - score.correct - score.wrong);
+document.getElementById('rsPct').textContent = pct + '%';
+
+let title = 'Test Complete!';
+let msg = '';
+
+if (timedOut) title = 'Time Up!';
+
+// complement after the test based on the score 
+
+if (pct === 100) {
+msg = 'Perfect score! You have mastered the Vedic sutras of this level. The ancient mathematicians would be proud.';}
+else if (pct >= 80) {
+msg = 'Excellent work! Your command of Vedic techniques is strong. A bit more practice and you will achieve mastery.';}  
+else if (pct >= 60) {
+msg = 'Good effort! Revisit the learning sections for the methods where you stumbled. Vedic maths rewards consistent practice.';}
+else if (pct >= 40) {
+msg = 'Keep going! Study the sutra explanations in the learning sections and try again. Every repetition builds speed.';}
+else {
+msg = 'The journey begins! Read through each method carefully, study the worked examples, then return to test yourself.';}
+
+document.getElementById('resultTitle').textContent = title;
+document.getElementById('resultMsg').textContent = msg;
+
+resultMandalaInterval = animateResultMandala();
+document.getElementById('resultView').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+document.getElementById('retryBtn').addEventListener('click', () => { clearInterval(resultMandalaInterval);
+drawMandala(document.getElementById('resultMandala'), 100, true); startTest();
+});
+
+showSection('home');
+
+// :) 
