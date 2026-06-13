@@ -197,3 +197,95 @@ angle += 0.01;
 }, 30);
 return intervalId; }
 
+// question bank , each level will have 10 questions ,5 levels , so in total 50 questions
+
+const QUESTIONS = {
+1: [
+{ q: "7 + 8 = ?",
+options: ["13", "14", "15", "16"],
+ans: 2,
+sutra: "Sutra: Ekadhikena Purvena (Left-to-Right Addition)",
+steps: [ "Add left to right — since both are single digits, just add directly.",
+        "7 + 8 = 15",
+        "Alternatively: 7 + 8 → 7 + (3 + 5) = (7+3) + 5 = 10 + 5 = 15 (complement of 10 method)"
+]
+},
+{ q: "9 + 6 = ?",
+options: ["14", "15", "16", "13"],
+ans: 1,
+sutra: "Sutra: Nikhilam — complement to 10",
+steps: [ "9 is 1 less than 10. So 9 + 6 = 10 + 6 − 1 = 16 − 1 = 15",
+        "Complement method: 10 − 9 = 1. Take 1 from 6 → 6−1=5. Answer = 10 + 5 = 15"
+]
+},
+{ q: "15 − 8 = ?",
+options: ["8", "7", "6", "9"],
+ans: 1,
+sutra: "Sutra: Nikhilam — All from 9, Last from 10",
+steps: [ "Complement of 8 w.r.t. 10 = 10 − 8 = 2",
+"15 − 8 = (10 + 5) − 8 = 10 − 8 + 5 = 2 + 5 = 7"
+]
+},
+{ q: "6 × 7 = ?",
+options: ["42", "48", "36", "54"],
+ans: 0,
+sutra: "Sutra: Urdhva-Tiryagbhyam (Vertical × Crosswise)",
+steps: [ "6 × 7 — both close to base 10",
+        "Deviations from 10: 6→ −4, 7 → −3",
+        "Cross-sum: 6 + (−3) = 3 (tens digit)",
+        "Product of deviations: (−4)×(−3) = 12 → units digit 2, carry 1",
+        "Tens = 3 + 1 = 4 → Answer: 42"
+]
+},
+{ q: "18 ÷ 9 = ?",
+options: ["3", "2", "4", "1"],
+ans: 1,
+sutra: "Sutra: Digit Sum (Division by 9)",
+steps: [ "Bring down the leading digit: 1",
+        "1 + 8 = 9 → but we are checking: 9 × 2 = 18, so quotient = 2",
+        "By the digit-sum rule for dividing by 9: sum the digits of 18 = 9, so 18/9 = 2"
+]
+},
+{ q: "13 + 14 = ?",
+options: ["26", "27", "28", "25"],
+ans: 1,
+sutra: "Sutra: Left-to-Right Addition",
+steps: [ "Tens: 1 + 1 = 2",
+"Units: 3 + 4 = 7",
+"No carry needed → 27"
+]
+},
+{ q: "20 − 13 = ?",
+options: ["8", "7", "6", "9"],
+ans: 1,
+sutra: "Sutra: Nikhilam Complement",
+steps: [ "Complement of 13 w.r.t. 20: 20 − 13",
+        "13 complement from 10 = 10−3=7, since borrowing: 20 − 13 = 7"
+]
+},
+{ q: "5 × 9 = ?",
+options: ["40", "50", "45", "35"],
+ans: 2,
+sutra: "Sutra: Ekadhikena — multiplying by 9",
+steps: [ "9 = 10 − 1",
+        "5 × 9 = 5 × 10 − 5 × 1 = 50 − 5 = 45"
+]
+},
+{ q: "16 + 17 = ?",
+options: ["31", "33", "32", "34"],
+ans: 2,
+sutra: "Sutra: Left-to-Right Addition",
+steps: [ "Tens: 1 + 1 = 2",
+"Units: 6 + 7 = 13 → write 3, carry 1 → tens become 3",
+"Answer: 33... wait: 2 tens + carry = 3 tens, units = 3 → 33? No: 16+17=33" ]
+},
+{ q: "14 − 9 = ?",
+options: ["6", "4", "5", "3"],
+ans: 2,
+sutra: "Sutra: Complement from 10",
+steps: [ "9 is 1 less than 10",
+"14 − 9 = 14 − 10 + 1 = 4 + 1 = 5" 
+] 
+} 
+],
+}
