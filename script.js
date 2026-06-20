@@ -544,7 +544,7 @@ steps: [ "48 = 50 − 2, 52 = 50 + 2",
 ]
 },
 { q: "3456 ÷ 9 = ?",
-options: ["383 r 9", "384 r 0", "384 r 1", "385 r 1"],
+options: ["383 , remainder 9", "384, remainder 0", "384, remainder 1", "385, remainder 1"],
 ans: 1,
 sutra: "Sutra: Division by 9 — Digit Propagation",
 steps: [ "Digits: 3, 4, 5, 6",
